@@ -1,401 +1,761 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BOMETH | Future Web Developer</title>
+    <meta name="description"
+        content="Bometh - Future Web Developer. Personal portfolio website showcasing web development skills and projects.">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    <title>BOMETH | Future Web Developer</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      color: #222;
-      line-height: 1.6;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px 7%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #020617;
+            color: #e2e8f0;
+            line-height: 1.6;
+            transition: 0.3s;
+        }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        /* LIGHT MODE */
+        body.light {
+            background: #f8fafc;
+            color: #0f172a;
+        }
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
+        /* NAVBAR */
+        header {
+            background: #0f172a;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+        body.light header {
+            background: #ffffff;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    nav a:hover {
-      color: #38bdf8;
-    }
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
 
-    section {
-      padding: 70px 7%;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
 
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #dbeafe, #f8fafc);
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-    .hero h1 {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
+        body.light nav a {
+            color: #0f172a;
+        }
 
-    .hero h2 {
-      color: #2563eb;
-      margin-bottom: 20px;
-    }
+        nav a:hover {
+            color: #38bdf8;
+        }
 
-    .hero p {
-      max-width: 600px;
-      margin-bottom: 25px;
-    }
+        #themeButton {
+            border: none;
+            background: #38bdf8;
+            color: #020617;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 5px;
-    }
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 7%;
+            background: linear-gradient(135deg, #020617, #0f172a);
+        }
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
+        body.light .hero {
+            background: linear-gradient(135deg, #dbeafe, #f8fafc);
+        }
 
-    .github-btn {
-      background: #111827;
-    }
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
 
-    .github-btn:hover {
-      background: #374151;
-    }
+        .hero h2 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
 
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 35px;
-    }
+        .hero p {
+            max-width: 650px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
 
-    .about {
-      background: white;
-      text-align: center;
-    }
+        #clock {
+            margin-top: 10px;
+            font-size: 17px;
+            color: #38bdf8;
+            font-weight: bold;
+        }
 
-    .about p {
-      max-width: 700px;
-      margin: auto;
-    }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #020617;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-    .skills-container,
-    .projects-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+        }
 
-    .skill,
-    .project {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      width: 280px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
+        /* GENERAL SECTIONS */
+        section {
+            padding: 80px 7%;
+        }
 
-    .skill h3,
-    .project h3 {
-      margin-bottom: 10px;
-      color: #2563eb;
-    }
+        section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #38bdf8;
+        }
 
-    .contact {
-      background: #e5e7eb;
-    }
+        /* ABOUT */
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            background: #0f172a;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #1e293b;
+        }
 
-    .contact-form {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
+        body.light .about-box {
+            background: white;
+            border: 1px solid #cbd5e1;
+        }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
-      font-size: 16px;
-      font-family: inherit;
-    }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #38bdf8;
+            color: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            font-weight: bold;
+        }
 
-    .contact-form textarea {
-      resize: vertical;
-    }
+        .about-box h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
 
-    .contact-form button {
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 7px;
-      background: #2563eb;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+        .about-box p {
+            margin-bottom: 12px;
+        }
 
-    .contact-form button:hover {
-      background: #1d4ed8;
-    }
+        /* SKILLS */
+        .skills-container {
+            max-width: 850px;
+            margin: auto;
+        }
 
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+        .skill {
+            margin-bottom: 25px;
+        }
 
-    @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
+        .skill-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
 
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-      }
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            background: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+        }
 
-      .hero h1 {
-        font-size: 35px;
-      }
+        body.light .skill-bar {
+            background: #cbd5e1;
+        }
 
-      section {
-        padding: 55px 5%;
-      }
-    }
-  </style>
+        .skill-progress {
+            height: 100%;
+            background: #38bdf8;
+            border-radius: 20px;
+        }
+
+        .html {
+            width: 75%;
+        }
+
+        .css {
+            width: 65%;
+        }
+
+        .javascript {
+            width: 40%;
+        }
+
+        /* PROJECT FILTER */
+        .filters {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #38bdf8;
+            color: #020617;
+        }
+
+        body.light .filter-btn {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        body.light .filter-btn:hover,
+        body.light .filter-btn.active {
+            background: #38bdf8;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .project {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #1e293b;
+            transition: 0.3s;
+        }
+
+        body.light .project {
+            background: white;
+            border: 1px solid #cbd5e1;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+        }
+
+        .project h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            margin-bottom: 15px;
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #38bdf8;
+            color: #020617;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            background: #0f172a;
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        body.light .contact-box {
+            background: white;
+            border: 1px solid #cbd5e1;
+        }
+
+        .github-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #020617;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        body.light footer {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <header>
-    <nav>
-      <div class="logo">BOMETH</div>
+    <!-- NAVBAR -->
+    <header>
+        <nav>
 
-      <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>
+            <div class="logo">BOMETH</div>
 
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
 
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <h1>Hello, I'm Bometh 👋</h1>
+                <li>
+                    <button id="themeButton">☀️ / 🌙</button>
+                </li>
+            </ul>
 
-    <h2>Future Web Developer 🚀</h2>
-
-    <p>
-      I am learning web development and building modern websites
-      using HTML, CSS and JavaScript.
-    </p>
-
-    <div>
-      <a href="#projects" class="btn">View My Projects</a>
-
-      <a
-        href="https://github.com/"
-        target="_blank"
-        class="btn github-btn">
-        GitHub 💻
-      </a>
-    </div>
-  </section>
+        </nav>
+    </header>
 
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <h2 class="section-title">About Me</h2>
+    <!-- HERO -->
+    <section class="hero" id="home">
 
-    <p>
-      Hi! I'm Bometh. I'm currently learning web development.
-      My goal is to become a professional web developer and create
-      useful and beautiful websites.
-    </p>
-  </section>
+        <h1>Hello, I'm Bometh 👋</h1>
 
+        <h2>Future Web Developer 🚀</h2>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2 class="section-title">My Skills</h2>
-
-    <div class="skills-container">
-
-      <div class="skill">
-        <h3>HTML 🌐</h3>
-        <p>Creating the structure of modern websites.</p>
-      </div>
-
-      <div class="skill">
-        <h3>CSS 🎨</h3>
-        <p>Designing beautiful and responsive websites.</p>
-      </div>
-
-      <div class="skill">
-        <h3>JavaScript ⚡</h3>
-        <p>Adding interactive features to websites.</p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2 class="section-title">My Projects</h2>
-
-    <div class="projects-container">
-
-      <div class="project">
-        <h3>Portfolio Website</h3>
-        <p>
-          My personal portfolio website created using HTML and CSS.
+        <p id="welcome">
+            Welcome to my personal portfolio website.
         </p>
-      </div>
 
-      <div class="project">
-        <h3>Snake Game 🐍</h3>
+        <div id="clock">
+            Loading time...
+        </div>
+
+        <a href="#projects" class="btn">
+            View My Projects
+        </a>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <h2>About Me</h2>
+
+        <div class="about-box">
+
+            <div class="avatar">
+                B
+            </div>
+
+            <h3>Hi, I'm Bometh</h3>
+
+            <p>
+                I'm a student who is learning web development
+                and building websites using HTML, CSS and JavaScript.
+            </p>
+
+            <p>
+                My goal is to become a professional web developer
+                and create useful websites in the future.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <h2>My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill">
+
+                <div class="skill-title">
+                    <span>HTML</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress html"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-title">
+                    <span>CSS</span>
+                    <span>65%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress css"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-title">
+                    <span>JavaScript</span>
+                    <span>40%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress javascript"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <h2>My Projects</h2>
+
+
+        <!-- FILTER BUTTONS -->
+        <div class="filters">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="html">
+                HTML
+            </button>
+
+            <button class="filter-btn" data-filter="css">
+                CSS
+            </button>
+
+            <button class="filter-btn" data-filter="javascript">
+                JavaScript
+            </button>
+
+        </div>
+
+
+        <!-- PROJECT CARDS -->
+        <div class="projects">
+
+
+            <div class="project" data-category="html">
+
+                <h3>Personal Website</h3>
+
+                <p>
+                    My first personal website created using HTML.
+                </p>
+
+                <a href="#" class="project-btn">
+                    View Project
+                </a>
+
+            </div>
+
+
+            <div class="project" data-category="css">
+
+                <h3>Responsive Portfolio</h3>
+
+                <p>
+                    A responsive portfolio website designed
+                    using HTML and CSS.
+                </p>
+
+                <a href="#" class="project-btn">
+                    View Project
+                </a>
+
+            </div>
+
+
+            <div class="project" data-category="javascript">
+
+                <h3>JavaScript Project</h3>
+
+                <p>
+                    A simple JavaScript project that I am
+                    learning and developing.
+                </p>
+
+                <a href="#" class="project-btn">
+                    View Project
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+        <h2>Contact Me</h2>
+
+        <div class="contact-box">
+
+            <p>
+                Interested in my work? You can find me on GitHub.
+            </p>
+
+            <a
+                href="https://github.com/lakvidubometh-create"
+                target="_blank"
+                class="github-btn">
+                Visit My GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
         <p>
-          A simple Snake game project created using JavaScript.
+            © 2026 Bometh | Future Web Developer 🚀
         </p>
-      </div>
 
-      <div class="project">
-        <h3>Future Project 🚀</h3>
-        <p>
-          More exciting web development projects coming soon.
-        </p>
-      </div>
-
-    </div>
-  </section>
+    </footer>
 
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
+    <!-- JAVASCRIPT -->
+    <script>
 
-    <h2 class="section-title">Contact Me</h2>
+        /* DARK / LIGHT MODE */
 
-    <div class="contact-form">
+        const themeButton =
+            document.getElementById("themeButton");
 
-      <form
-        action="https://formsubmit.co/"
-        method="POST">
+        themeButton.addEventListener("click", function () {
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required>
+            document.body.classList.toggle("light");
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required>
-
-        <textarea
-          name="message"
-          rows="6"
-          placeholder="Your Message"
-          required></textarea>
-
-        <input
-          type="hidden"
-          name="_subject"
-          value="New Portfolio Contact">
-
-        <input
-          type="hidden"
-          name="_captcha"
-          value="true">
-
-        <button type="submit">
-          Send Message 📩
-        </button>
-
-      </form>
-
-      <br>
-
-      <a
-        href="https://github.com/"
-        target="_blank"
-        class="btn github-btn">
-        Visit My GitHub 💻
-      </a>
-
-    </div>
-
-  </section>
+        });
 
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 BOMETH. All Rights Reserved.</p>
-  </footer>
+        /* LIVE CLOCK */
+
+        function showTime() {
+
+            const now = new Date();
+
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            let ampm = hours >= 12 ? "PM" : "AM";
+
+            hours = hours % 12;
+
+            if (hours === 0) {
+                hours = 12;
+            }
+
+            hours = String(hours).padStart(2, "0");
+            minutes = String(minutes).padStart(2, "0");
+            seconds = String(seconds).padStart(2, "0");
+
+            document.getElementById("clock").textContent =
+                "Current Time: " +
+                hours + ":" +
+                minutes + ":" +
+                seconds + " " +
+                ampm;
+        }
+
+        showTime();
+
+        setInterval(showTime, 1000);
+
+
+        /* WELCOME MESSAGE */
+
+        setTimeout(function () {
+
+            document.getElementById("welcome").textContent =
+                "Thanks for visiting my portfolio! 🚀";
+
+        }, 3000);
+
+
+        /* PROJECT FILTER */
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const projects =
+            document.querySelectorAll(".project");
+
+
+        filterButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const filter =
+                    button.getAttribute("data-filter");
+
+
+                filterButtons.forEach(function (btn) {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+
+                projects.forEach(function (project) {
+
+                    const category =
+                        project.getAttribute("data-category");
+
+
+                    if (filter === "all" ||
+                        category === filter) {
+
+                        project.style.display = "block";
+
+                    } else {
+
+                        project.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
 
 </body>
+
 </html>
